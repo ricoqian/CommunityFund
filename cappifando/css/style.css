@@ -162,6 +162,9 @@ img {
 .btn {
 	margin-top: 10px;
 }
+.hid {
+	margin-top: 10px;
+}
 /* Main menu styles
 ========================================================*/
 
@@ -286,7 +289,11 @@ img {
   nav.put-left {
     padding-bottom: 0px;
   }
+  nav.put-center {
+    padding-bottom: 0px;
+  }
 }
+
 /* Stuck menu styles
 ========================================================*/
 .isStuck {
@@ -304,6 +311,18 @@ img {
 =========================================================*/
 #content {
   overflow: hidden;
+}
+.pull-right {
+	margin-right: 100px;
+}
+.pull-left {
+	margin-left: 100px;
+}
+.text-left {
+	margin-left: 100px;
+}
+.text-right {
+	margin-right: 100px;
 }
 /*============  Headers  =============*/
 .header_1 {
