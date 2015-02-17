@@ -139,16 +139,15 @@ img {
 }
 .brand h1 {
   display: inline-block;
-  text-align: center;
+  text-align: left;
 }
-@media (max-width: 200px) {
+@media (max-width: 979px) {
   .brand {
-  	text-align: center;
     float: none;
   }
 }
 .nav {
-  text-align: center;
+  text-align: right;
 }
 @media (max-width: 979px) {
   .nav {
@@ -156,19 +155,11 @@ img {
     float: none;
   }
 }
-.form-group {
-	margin-top: 10px;
-}
-.btn {
-	margin-top: 10px;
-}
 /* Main menu styles
 ========================================================*/
-
 .sf-menu {
   display: inline-block;
-  margin-right: -30px;
-  margin-left: -30px;
+  margin-right: -10px;
 }
 .sf-menu > li {
   position: relative;
@@ -281,9 +272,6 @@ img {
 }
 @media (max-width: 479px) {
   nav.put-right {
-    padding-bottom: 0px;
-  }
-  nav.put-left {
     padding-bottom: 0px;
   }
 }
