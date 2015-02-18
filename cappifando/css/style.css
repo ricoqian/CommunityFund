@@ -135,6 +135,7 @@ img {
   }
 }
 .brand {
+  margin-bottom: -70px;
   text-align: center;
 }
 .brand h1 {
