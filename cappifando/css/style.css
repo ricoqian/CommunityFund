@@ -916,3 +916,6 @@ a[data-type='lightbox']:hover img {
   }
 }
 /*Core variables and mixins*/
+strong { 
+    font-weight: bold;
+}
