@@ -20,14 +20,6 @@
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script> 
-	<script src="js/jquery.localscroll.js" type="text/javascript"></script> 
-	<script src="js/jquery.scrollTo.js" type="text/javascript"></script> 
-	<script type="text/javascript">
-		$(document).ready(function() {
-   		$('#about').localScroll({duration:800});
-		});
-	</script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -39,8 +31,8 @@
 
 <body>
 
-    <div class="brand">Business Casual</div>
-    <div class="address-bar">3481 Melrose Place | Beverly Hills, CA 90210 | 123.456.7890</div>
+    <div class="brand">Project Name</div>
+    <div class="address-bar">Subtitle</div>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default" role="navigation">
@@ -63,7 +55,7 @@
                         <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="about.html">About</a>
                     </li>
                     <li>
                         <a href="blog.html">Blog</a>
@@ -78,7 +70,7 @@
         <!-- /.container -->
     </nav>
 
-    <section id="about" class="container">
+    <div class="container">
 
         <div class="row">
             <div class="box">
@@ -115,11 +107,11 @@
                     <h2 class="brand-before">
                         <small>Welcome to</small>
                     </h2>
-                    <h1 class="brand-name">Business Casual</h1>
+                    <h1 class="brand-name">Project Name</h1>
                     <hr class="tagline-divider">
                     <h2>
                         <small>By
-                            <strong>Start Bootstrap</strong>
+                            <strong>Team Name</strong>
                         </small>
                     </h2>
                 </div>
@@ -130,8 +122,8 @@
             <div class="box">
                 <div class="col-lg-12">
                     <hr>
-                    <h2 class="intro-text text-center">Build a website
-                        <strong>worth visiting</strong>
+                    <h2 class="intro-text text-center">Use for showing 
+                        <strong>Project money and likes data</strong>
                     </h2>
                     <hr>
                     <img class="img-responsive img-border img-left" src="img/intro-pic.jpg" alt="">
@@ -148,7 +140,7 @@
                 <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">Beautiful boxes
-                        <strong>to showcase your content</strong>
+                        <strong>to showcase your project</strong>
                     </h2>
                     <hr>
                     <p>Use as many boxes as you like, and put anything you want in them! They are great for just about anything, the sky's the limit!</p>
@@ -164,7 +156,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    © <span id="copyright-year"></span> | <a href="../contacts.html">Contact us</a> <br/>
+                    Website created by Z-SQL
                 </div>
             </div>
         </div>
