@@ -17,6 +17,13 @@ background: #fff;
 
 }
 
+.basic_info_field{
+    width:50%;
+
+
+
+}
+
 .board > div.board-inner{
     background: #fafafa url(http://subtlepatterns.com/patterns/geometry2.png);
     background-size: 30%;
