@@ -183,6 +183,10 @@ footer p {
     }
 }
 
+.progress{
+		height:30px;
+    }
+
 @media screen and (min-width:1200px) {
     .box:after {
         content: '';
