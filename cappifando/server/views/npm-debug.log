@@ -1,0 +1,19 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ec2-user/.nvm/v0.10.31/bin/node',
+1 verbose cli   '/home/ec2-user/.nvm/v0.10.31/bin/npm',
+1 verbose cli   'start' ]
+2 info using npm@1.4.23
+3 info using node@v0.10.31
+4 error Error: ENOENT, open '/home/ec2-user/studyingNodeJs/test/test2/views/package.json'
+5 error If you need help, you may report this *entire* log,
+5 error including the npm and node versions, at:
+5 error     <http://github.com/npm/npm/issues>
+6 error System Linux 3.14.33-26.47.amzn1.x86_64
+7 error command "/home/ec2-user/.nvm/v0.10.31/bin/node" "/home/ec2-user/.nvm/v0.10.31/bin/npm" "start"
+8 error cwd /home/ec2-user/studyingNodeJs/test/test2/views
+9 error node -v v0.10.31
+10 error npm -v 1.4.23
+11 error path /home/ec2-user/studyingNodeJs/test/test2/views/package.json
+12 error code ENOENT
+13 error errno 34
+14 verbose exit [ 34, true ]
