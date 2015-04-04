@@ -77,18 +77,18 @@ html(lang='en')
             </ul>
           #tab-content
             h1 Welcome Back!
-            form(action='/', method='post')
+            form(action='/login', method='post')
               .field-wrap
                 label
                   span.req._placeholder
-                input(type='email', placeholder='Email Address', required='', autocomplete='off')
+                input(type='email', name ='email', placeholder='Email Address', required='', autocomplete='off')
               .field-wrap
                 label
                   span.req._placeholder
-                input(type='password', placeholder='Password', required='', autocomplete='off')
+                input(type='password', name = 'password', placeholder='Password', required='', autocomplete='off')
               p.forgot
                 a(href='#') Forgot Password?
-              button(id='buttonlogin button-block')
+              button(type='submit', id='buttonlogin button-block')
                 | Log In
         // tab-content
     // /form
