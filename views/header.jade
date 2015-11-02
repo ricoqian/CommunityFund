@@ -1,0 +1,53 @@
+extend head
+block header
+  .page
+    header#header
+      .brand.put-center
+        h1
+          a(href='/')
+            img(src='/images/logo_updated.jpg', alt='Cappifando', width='220', height='100')
+      #stuck_container
+        .container
+          .row
+            .grid_12
+              nav.nav.put-left
+                ul.sf-menu
+                  li
+                    a(href='/searchproject') Projects
+                    ul
+                      li
+                        a(href='#') Design
+                      li
+                        a(href='#') Art
+                      li
+                        a(href='#') Software
+                      li
+                        a(href='#') Hardware
+                      li
+                        a(href='#') Entertainment
+                      li
+                        a(href='#') Healthcare
+                  li
+                    a(href='/contacts') About Us
+              nav.nav.put-right
+                ul.sf-menu
+                  li
+                    form.navbar-form.navbar-right(role='search')
+                      .form-group
+                        input.form-control(type='text', placeholder='Search')
+                      button#headerSearchButton.btn.btn-default(type='submit')
+                        a(href='/searchproject')
+                          span.glyphicon.glyphicon-search
+                  if req.isAuthenticated()        
+                    li
+                      a(href='/logout', title='Logout') Log out            
+                    li
+                      a(href='/users/#{req.user._id}') Profile
+                  
+                  else
+                    li
+                      a(href='/login') Log in
+                    li
+                      a(href='/signup') Sign up
+  
+    block content  

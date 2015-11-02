@@ -1,0 +1,45 @@
+extend ../header
+block content
+  #page-wrapper
+    .container-fluid
+      // Page Heading
+      .row
+        .col-lg-12
+          h1.page-header
+            | Individual Profile
+      .row
+        .col-lg-6
+          .form-group
+            label Username
+            p #{user.username}
+          .form-group
+            label First Name
+            p #{user.firstname}
+          .form-group
+            label Last Name
+            p #{user.lastname}
+          .form-group
+            label Email
+            p #{user.email}
+          .form-group
+            label About yourself
+            p.form-control(rows='3')
+          .form-group
+            label Role
+            p #{user.role}
+          .form-group
+            label Community
+            p #{user.community}
+          .form-group
+            label.collapsed(data-toggle='collapse', data-target='#categoryMenu') Society
+            ul#categoryMenu(class="collapse")
+              if society
+                each friend in society
+                  if friend._id != user._id
+                    a(href="/users/#{friend._id}") #{friend.username} 
+                
+          
+          form(action="/users/#{user._id}/editprofile" method="get")
+            button.btn.btn-default(type='submit') Edit Profile
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+  script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')

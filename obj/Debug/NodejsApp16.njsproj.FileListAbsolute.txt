@@ -1,0 +1,4 @@
+C:\Users\Owner\Desktop\cappifando\obj\Debug\NodejsApp16.njsprojResolveAssemblyReference.cache
+C:\Users\Owner\Desktop\cappifando\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\Owner\Desktop\ip-rico\xin\obj\Debug\NodejsApp16.njsprojResolveAssemblyReference.cache
+C:\Users\Owner\Desktop\ip-rico\xin\bin\Microsoft.NodejsTools.WebRole.dll

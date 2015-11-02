@@ -1,0 +1,291 @@
+extend ../header
+block content
+  
+  
+  #searchProject_search
+    form.form-inline(id="filter" method="get" action="/searchproject/filter" name="filter" role="form")
+      .form-group
+        // Only form elements with a name attribute will have their values passed when submitting a form.
+        // use name=q for google testing only
+        if  typeof q == "undefined"|| q==""
+          input#searchProject_searchInput.form-control(name='q', type='text', size='80', placeholder='Search Projects' )
+        else
+          input#searchProject_searchInput.form-control(name='q', type='text', size='80',  value='#{q}')
+      button.btn.btn-default(type='submit', onclick='onclick_searchProject()')
+        span.glyphicon.glyphicon-search
+    
+  
+  div  
+    #searchProject_menu.navbar-default.sidebar(size="100px") 
+      span#searchProject_menu_showresultfor  Show results for
+        
+      ul#side-menu.nav
+        li
+          a.collapsed(data-toggle='collapse', data-target='#categoryMenu') Category
+            span.fa.arrow
+          ul#categoryMenu(class="collapse in")
+            li
+              .checkbox_container
+                if category == 'arts'
+                  input#checkbox_Arts(type='checkbox',name="category",value='arts' checked form="filter")
+                else
+                  input#checkbox_Arts(type='checkbox',name="category",value='arts' unchecked form="filter")
+              .inlineli
+                label(for="checkbox_Arts") Arts
+            li
+              .checkbox_container
+                if category == 'software'
+                  input#checkbox_Software(type='checkbox',name="category",value='software' checked form="filter")
+                else
+                  input#checkbox_Software(type='checkbox',name="category",value='software' unchecked form="filter")
+              .inlineli
+                label(for="checkbox_Software") Software
+            li
+              .checkbox_container
+                if category == 'hardware'
+                  input#checkbox_Hardware(type='checkbox', name="category",value='hardware' checked form="filter")
+                else
+                  input#checkbox_Hardware(type='checkbox', name="category",value='hardware' unchecked  form="filter")
+              .inlineli
+                label(for="checkbox_Hardware") Hardware
+            li
+              .checkbox_container
+                if category == 'design'
+                  input#checkbox_Design(type='checkbox', name="category",value='design' checked  form="filter")
+                else
+                  input#checkbox_Design(type='checkbox', name="category",value='design' unchecked  form="filter")
+              .inlineli
+                label(for="checkbox_Design") Design
+            li
+              .checkbox_container
+                if category == 'entertainment'
+                  input#checkbox_Entertainment(type='checkbox', name="category",value='entertainment' checked  form="filter")
+                else
+                  input#checkbox_Entertainment(type='checkbox', name="category",value='entertainment' unchecked  form="filter")
+              .inlineli
+                label(for="checkbox_Fashion") Entertainment
+            li
+              .checkbox_container
+                if category == 'healthcare'
+                  input#checkbox_Healthcare(type='checkbox', name="category",value='healthcare' checked  form="filter")
+                else
+                  input#checkbox_Healthcare(type='checkbox', name="category",value='healthcare' unchecked  form="filter")
+              .inlineli
+                label(for="checkbox_Healthcare") Healthcare                  
+        li
+          a(data-toggle='collapse', data-target='#Fund')
+            | Amount of fund needed
+            span.fa.arrow
+          ul#Fund(class="collapse")
+            li
+              .checkbox_container
+                input(type='checkbox' name='fund' value='1' form="filter")
+              .inlineli
+                label <$100
+            li
+              .checkbox_container
+                input(type='checkbox' name='fund' value='2' form="filter")
+              .inlineli
+                label $100~$500
+            li
+              
+              .checkbox_container
+                if fund=='3'
+                  input(type='checkbox' name='fund' value='3' form="filter" checked)
+                else
+                  input(type='checkbox' name='fund' value='3' form="filter" unchecked)
+              .inlineli
+                label $500~$2000
+            li
+              .checkbox_container
+                input(type='checkbox' name='fund' value='4' form="filter")
+              .inlineli
+                label >$2000
+        li
+          a(data-toggle='collapse', data-target='#Progress')
+            | Project progress
+            span.fa.arrow
+          ul#Progress(class="collapse in")
+            li
+              .checkbox_container
+                if progress=="haventstarted"
+                  input#checkbox_haventstarted(type='checkbox', name="progress",value='haventstarted' checked form="filter")
+                else
+                  input#checkbox_haventstarted(type='checkbox', name="progress",value='haventstarted' unchecked form="filter")
+              .inlineli
+                label(for="checkbox_haventstarted") Haven't started
+            li
+              .checkbox_container
+                if progress=="inprogress"
+                  input#checkbox_inprogress(type='checkbox', name="progress",value='inprogress' checked  form="filter")
+                else
+                  input#checkbox_inprogress(type='checkbox', name="progress",value='inprogress' unchecked  form="filter")  
+              .inlineli
+                label(for="checkbox_inprogress") In progress
+            li
+              .checkbox_container
+                if progress=="completed"
+                  input#checkbox_completed(type='checkbox', name="progress",value='completed' checked  form="filter")
+                else 
+                  input#checkbox_completed(type='checkbox', name="progress",value='completed' unchecked  form="filter")
+              .inlineli
+                label(for="checkbox_completed") Completed
+        br
+    br
+    div(style="float: center;position:abolute; right: 100px;top: 150px;")  
+      select(name="sortby" form ="filter" onchange="document.getElementById('filter').submit()")    
+        if sortby=="ratings"
+          option(value="ratings") Most Popular  
+          option(value="createdAt" )  Newest-Oldest
+        else
+          option(value="createdAt" )  Newest-Oldest
+          option(value="ratings") Most Popular  
+    br
+    br
+    #searchProject_list
+      br  
+
+      .row
+        if projects.length 
+          each project, i in projects
+            .col-md-4.portfolio-item
+              a(href="/individual/story/#{project._id}" title="#{project.title}") 
+                img.img-responsive(src='/images/#{project.photo.file.name}', alt='')
+              h3 Project Title: 
+                a(href="/individual/story/#{project._id}" title="#{project.title}") #{project.title} 
+              p Created Time:#{project.createdAt.toISOString().replace(/T/, ' ').replace(/\..+/, '')}
+              if project.user 
+                span Author: 
+                a(href="/users/#{project.user._id}") #{project.user.username} 
+              if project.tags 
+                span Tags:
+                each tag in project.tags.split(',')
+                  i.muted.fa.fa-tag
+                  a.tag(href='/tags/#{tag}') #{tag}
+              h3 Description: 
+              p(style="-o-text-overflow: ellipsis; text-overflow: ellipsis; overflow:hidden; white-space:nowrap; width: 300px;") #{project.body}
+
+        else              
+           h4.muted No projects.
+        
+  
+  style.
+    #searchProject_search {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    text-align: center;
+    }
+    #searchProject_menu {
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-top: 20px;
+    height: 1000px;
+    <!
+    --font-size: 20px;-->
+    }
+    #searchProject_menu .nav {
+    text-align: left;
+    }
+    #searchProject_menu_showresultfor {
+    margin-top: 20px;
+    margin-left: 16px;
+    font-size: 20px;
+    }
+    .checkbox_container {
+    margin-left: 16px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    }
+    .checkbox_container img {
+    width: 90%;
+    height: auto;
+    }
+    .inlineli {
+    display: inline-block;
+    margin-left: 2px;
+    }
+    .sidebar ul li {
+    border-bottom: 1px solid #e7e7e7;
+    }
+    .sidebar ul li a.active {
+    background-color: #eee;
+    }
+    .sidebar .arrow {
+    float: right;
+    }
+    .sidebar .fa.arrow:before {
+    content: "\f104";
+    }
+    .sidebar .active > a > .fa.arrow:before {
+    content: "\f107";
+    }
+    @media (min-width: 300px) {
+    .sidebar {
+    z-index: 1;
+    position: relative;
+    width: 250px;
+    margin-top: 51px;
+    }
+    }
+  script.
+    function onclick_searchProject() {
+    var search = document.getElementById("searchProject_searchInput").value;
+    window.location = '/search?q=' + search;
+    }
+  
+  // jQuery library CDN(Content Delivery Network)
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+  // Bootstrap Core JavaScript
+  script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js')
+  script.
+    function oncheck_Arts() {
+    var check = document.getElementById("checkbox_Arts").checked;
+    if (check) {
+    document.getElementById("checkbox_Arts").checked = false;
+    } else {
+    document.getElementById("checkbox_Arts").checked = true;
+    }
+    }
+    $('input[type="radio"]').mousedown(function() {
+    if (this.checked) {
+        $(this).mouseup(function(e) {
+            var radio = this;
+            //radio.checked = false;
+            setTimeout(function() {
+                radio.checked = false;
+            }, 5);
+            $(this).unbind('mouseup');
+        });
+      }
+    });
+    
+    $('input[type=radio]').click(function() {
+      //alert("Hello! I am an alert box!");
+      //$(this).closest("form").submit();
+      $("#filter").submit();
+      });
+    $("input:checkbox").on('click', function() {
+      // in the handler, 'this' refers to the box clicked on
+      var $box = $(this);
+      if ($box.is(":checked")) {
+        // the name of the box is retrieved using the .attr() method
+        // as it is assumed and expected to be immutable
+        var group = "input:checkbox[name='" + $box.attr("name") + "']";
+        // the checked state of the group/box on the other hand will change
+        // and the current value is retrieved using .prop() method
+        $(group).prop("checked", false);
+        $box.prop("checked", true);
+      } else {
+        $box.prop("checked", false);
+      }
+    });
+    
+    $('input[type=checkbox]').click(function() {
+      //alert("Hello! I am an alert box!");
+      //$(this).closest("form").submit();
+      $("#filter").submit();
+      });
+    

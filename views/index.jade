@@ -1,0 +1,147 @@
+doctype html
+html(lang='en')
+  head
+    title Home
+    meta(charset='utf-8')
+    meta(name='format-detection', content='telephone=no')
+    link(rel='icon', href='images/favicon.ico', type='image/x-icon')
+    link(rel='stylesheet', href='/css/grid.css')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/camera.css')
+    link(rel='stylesheet', href='/css/owl.carousel.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    script(src='/js/jquery.js')
+    script(src='/js/jquery-migrate-1.2.1.js')
+    script(src='/js/jquery.equalheights.js')
+    // [if (gt IE 9)|!(IE)] <!
+    script(src='/js/jquery.mobile.customized.min.js')
+    // <![endif]
+    script(src='/js/camera.js')
+    script(src='/js/owl.carousel.js')
+    //if lt IE 9
+      div(style=' clear: both; text-align:center; position: relative;')
+        a(href='http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode')
+          img(src='http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg', border='0', height='42', width='820', alt='You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.')
+      script(src='/js_page/html5shiv.js')
+      link(rel='stylesheet', type='text/css', media='screen', href='/css/ie.css')
+  body
+    .page
+      header#header
+        .brand.put-center
+          h1
+            a(href='/')
+              img(src='/images/logo_updated.jpg', alt='Cappifando', width='220', height='100')
+        #stuck_container
+          .container
+            .row
+              .grid_12
+                nav.nav.put-left
+                  ul.sf-menu
+                    li
+                      a(href='/searchproject') Projects
+                      ul
+                        li
+                          a(href='#') Design
+                        li
+                          a(href='#') Art
+                        li
+                          a(href='#') Software
+                        li
+                          a(href='#') Hardware
+                        li
+                          a(href='#') Entertainment
+                        li
+                          a(href='#') Healthcare
+                    li
+                      a(href='/contacts') About Us
+                nav.nav.put-right
+                  ul.sf-menu
+                    li
+                      form.navbar-form.navbar-right(role='search')
+                        .form-group
+                          input.form-control(type='text', placeholder='Search')
+                        button#headerSearchButton.btn.btn-default(type='submit')
+                          a(href='/searchproject')
+                            span.glyphicon.glyphicon-search
+                    if req.isAuthenticated()        
+                      li
+                        a(href='/logout', title='Logout') Log out            
+                      li
+                        a(href='/users/#{req.user._id}') Profile
+                    
+                    else
+                      li
+                        a(href='/login') Log in
+                      li
+                        a(href='/signup') Sign up
+      section#content
+        .ic
+          | More Website Templates @ TemplateMonster.com - September08, 2014!
+        .camera-wrapper
+          #camera.camera-wrap
+            div(data-src='/images/firstslide.jpg')
+              .fadeIn.camera_caption
+                h2.text_1.color_1 Looking For Something Fun?
+                a.btn_1(href='/searchproject') See More
+            div(data-src='/images/thirdslide.jpg')
+              .fadeIn.camera_caption
+                h2.text_1.color_1 Most Popular Designs
+                a.btn_1.pull-right(href='/searchproject') See More
+            div(data-src='/images/secondslide.jpg')
+              .fadeIn.camera_caption
+                h2.text_1.color_1.text-left Wild Ideas start here
+                a.btn_1.pull-right(href='/searchproject') See More
+        .container
+          .row.wrap_1.wrap_5
+            .grid_3
+              .box_1
+                .icon_1
+                h3.text_2.color_2.maxheight1
+                  a(href='/startproj') Start a Project
+                p.text_3.color_2.maxheight
+                  | We’re excited that you have some ideas that will help make our world more beautiful.
+                a.btn_2(href='/startproj') begin
+            .grid_3
+              .box_1
+                .icon_2
+                h3.text_2.color_2.maxheight1
+                  a(href='/searchproject') Donate to Projects
+                p.text_3.color_2.maxheight
+                  | Search interesting projects and donate to a project today!
+                a.btn_2(href='/searchproject') search
+            .grid_3
+              .box_1
+                .icon_3
+                h3.text_2.color_2.maxheight1
+                  a(href='#') How It Works
+                p.text_3.color_2.maxheight
+                  | Cannot figure out how to use Cappifando? Do not worry because we made a tutorial for you!
+                a.btn_2(href='#') learn it!
+        .container
+          .row
+            .col-lg-12
+              h1.page-header
+                | What is Popuar
+          .row
+            if projects.length 
+              each project, i in projects
+                .col-md-4.portfolio-item
+                  a(href='individual/story/#{project._id}')
+                    img.img-responsive(src='/images/#{project.photo.file.name}', alt='')
+                  h3
+                    a(href='individual/story/#{project._id}') #{project.title}
+                  p(style="-o-text-overflow: ellipsis; text-overflow: ellipsis; overflow:hidden; white-space:nowrap; width: 300px;")
+                    | #{project.body}
+
+          footer#footer.color_9
+            .container
+              .row
+                .grid_12
+                  p.info.text_4.color_4
+                    | © 
+                    span#copyright-year
+                    |  
+                    a(href='/contacts') Contact us
+                    br
+                    |                     Website created by Z-SQL
+          script(src='/js/script.js')

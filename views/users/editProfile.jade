@@ -1,0 +1,52 @@
+extend ../header
+block content
+  #page-wrapper
+    .container-fluid
+      // Page Heading
+      .row
+        .col-lg-12
+          h1.page-header
+            | Forms
+      // /.row
+      .row
+        .col-lg-6
+          form(role='form', action='/users/#{user._id}', method='post')
+            .form-group
+              label Username
+              input.form-control(name="username")
+            .form-group
+              label First Name
+              input.form-control(name="firstname" placeholder='Enter text')
+            .form-group
+              label Last Name
+              input.form-control(name="lastname" placeholder='Enter text')
+            .form-group
+              label Email
+              p.form-control-static #{user.email}
+            .form-group
+              label About yourself
+              textarea.form-control(rows='3') #{user.about}
+            .form-group
+              label Sign Up As
+              .radio
+                label
+                  input#optionsRadios1(type='radio', name='role', value='initiator', checked='')
+                  | Initiator
+              .radio
+                label
+                  input#optionsRadios2(type='radio', name='role', value='funders')
+                  | Funders
+              .radio
+                label
+                  input#optionsRadios3(type='radio', name='role', value='both')
+                  | Both Initiator and Funders
+            .form-group
+              label Selects Community
+              select.form-control(name="community")
+                option Arts
+                option Desgin
+                option Entertainment  
+                option Hardware
+                option Healthcare
+                option Software
+            button.btn.btn-default(type='submit') Submit Button

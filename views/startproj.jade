@@ -1,0 +1,211 @@
+doctype html
+html(lang='en', data-ng-app='')
+  head
+    title Project
+    meta(charset='utf-8')
+    meta(name='format-detection', content='telephone=no')
+    link(rel='icon', href='images/favicon.ico', type='image/x-icon')
+    link(rel='stylesheet', href='http://bootsnipp.com/dist/bootsnipp.min.css?ver=70eabcd8097cd299e1ba8efe436992b7')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js')
+    // Latest compiled and minified CSS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/start_proj.css')
+    link(rel='stylesheet', href='/css/grid.css')
+    link(rel='stylesheet', href='/css/style.css')
+    script(src='/js/jquery.js')
+    script(src='/js/jquery-migrate-1.2.1.js')
+    script(src='/js/jquery.equalheights.js')
+    // [if (gt IE 9)|!(IE)] <!
+    script(src='/js/jquery.mobile.customized.min.js')
+    // <![endif]
+    script(src='/js/camera.js')
+    script(src='/js/owl.carousel.js')
+    script(src='/js/start_proj.js')
+    // Latest compiled and minified JavaScript
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+    //if lt IE 9
+      div(style=' clear: both; text-align:center; position: relative;')
+        a(href='http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode')
+          img(src='http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg', border='0', height='42', width='820', alt='You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.')
+      script(src='/js/html5shiv.js')
+      link(rel='stylesheet', type='text/css', media='screen', href='/css/ie.css')
+  body
+    .page
+      //
+        ========================================================
+        HEADER
+        =========================================================
+      header#header
+        .brand.put-center
+          h1
+            a(href='/')
+              img(src='images/logo_updated.jpg', alt='Cappifando', width='220', height='100')
+        #stuck_container
+          .container
+            .row
+              .grid_12
+                nav.nav.put-left
+                  ul.sf-menu
+                    li
+                      a(href='/searchproject') Projects
+                      ul
+                        li
+                          a(href='#') Design
+                        li
+                          a(href='#') Art
+                        li
+                          a(href='#') Software
+                        li
+                          a(href='#') Hardware
+                    li
+                      a(href='/contacts') About Us
+                nav.nav.put-right
+                  ul.sf-menu
+                    li
+                      form.navbar-form.navbar-right(role='search')
+                        .form-group
+                          input.form-control(type='text', placeholder='Search')
+                        button#headerSearchButton.btn.btn-default(type='submit')
+                          a(href='/searchproject')
+                            span.glyphicon.glyphicon-search
+                    // <li class="current"><a href="services.html">Services</a></li>
+                    li
+                      a(href='/login') Log in
+                    li
+                      a(href='/signup') Sign up
+      //
+        ========================================================
+        CONTENT
+        =========================================================
+      section(style='background:#efefe9;')
+        .container
+          .row
+            .board
+              // <h2>Welcome to IGHALO!<sup>™</sup></h2>
+              .board-inner
+                ul#myTab.nav.nav-tabs
+                  .liner
+                  li.active
+                    a(href='#home', data-toggle='tab', title='Tags')
+                      span.round-tabs.one
+                        i.glyphicon.glyphicon-home(style='margin-top:19px;')
+                  li.disabled
+                    a(href='#profile', data-toggle='tab', title='Basic Info')
+                      span.round-tabs.two
+                        i.glyphicon.glyphicon-user(style='margin-top:19px;')
+                  li.disabled
+                    a(href='#messages', data-toggle='tab', title='Story')
+                      span.round-tabs.three
+                        i.glyphicon.glyphicon-gift(style='margin-top:19px;')
+                  li.disabled
+                    a(href='#settings', data-toggle='tab', title='Media')
+                      span.round-tabs.four
+                        i.glyphicon.glyphicon-comment(style='margin-top:19px;')
+                  li.disabled
+                    a(href='#doner', data-toggle='tab', title='Completed!')
+                      span.round-tabs.five
+                        i.glyphicon.glyphicon-ok(style='margin-top:19px;')
+              .tab-content
+                #home.tab-pane.fade.in.active
+                  h3.head.text-center
+                    | Tag your project down here
+                    span(style='color:#f48260;') ♥
+                    br
+                    input(type='text', name='tags', data-ng-model='tag', form='form4')
+                    | {{tag}}
+                  p.narrow.text-center
+                    | Here will be a list of all the tags...
+                    br
+                    | coming soon...
+                  form#home_form.form-horizontal.text-center(name='home_form', role='form')
+                    fieldset
+                      button.btn-submit.btn.btn-success.btn-outline-rounded.green(type='submit', href='#profile', name='home_form')
+                        | Next tab 
+                        span.glyphicon.glyphicon-send(style='margin-left:10px;')
+                #profile.tab-pane.fade
+                  h3.head.text-center Basic Information
+                  .text-center
+                    | Project Name:
+                    input(placeholder='name for your project..', name='title', type='text', form='form4')
+                    tab
+                      | cappifando.com/
+                      input(placeholder='create unique project url..', name='url', type='text', form='form4')
+                      br
+                      br
+                      | Project Category:
+                      select(name='category', type='text', form='form4')
+                        option(value='technology') Technology
+                        option(value='design') Design
+                        option(value='entertainment') Entertainment
+                        option(value='healthcare') Healthcare
+                        option(value='software') Software
+                        option(value='hardware') Hardware
+                      br
+                      br
+                      | Project Location:
+                      input(placeholder='e.g. Toronto', name='location', type='text', form='form4')
+                      | Funding Goal(CAD):
+                      input(placeholder='', name='fundgoal', type='text', form='form4')
+                  form#profile_form.form-horizontal.text-center(name='profile_form', role='form')
+                    fieldset
+                      button.btn-submit.btn.btn-success.btn-outline-rounded.green(type='submit', href='#messages', name='profile_form')
+                        | Next tab 
+                        span.glyphicon.glyphicon-send(style='margin-left:10px;')
+                #messages.tab-pane.fade
+                  h3.head.text-center Your story
+                  .narrow.text-center
+                    textarea(name='story', type='text', form='form4', rows='4', placeholder='write down what you want to share with others about your project')
+                  form#messages_form.form-horizontal.text-center(name='messages_form', role='form')
+                    fieldset
+                      button.btn-submit.btn.btn-success.btn-outline-rounded.green(type='submit', href='#settings', name='messages_form')
+                        | Next tab 
+                        span.glyphicon.glyphicon-send(style='margin-left:10px;')
+                #settings.tab-pane.fade
+                  h3.head.text-center Media/Social Network
+                  .narrow.text-center
+                    | Project photo:
+                    input#fileToUpload(type='file', name='photo', style=' margin: 0 auto ; height:50%; ', form='form4')
+                    br
+                    | Youtube Link:
+                    input(placeholder='', name='ylink', type='text', form='form4')
+                    br
+                    br
+                    | Social Network Link:
+                    input(placeholder='e.g. facebook.twitter', name='ssnetwork', type='text', form='form4')
+                  form#settings_form.form-horizontal.text-center(name='settings_form', role='form')
+                    fieldset
+                      button.btn-submit.btn.btn-success.btn-outline-rounded.green(type='submit', href='#doner', name='settings_form')
+                        | Next tab 
+                        span.glyphicon.glyphicon-send(style='margin-left:10px;')
+                #doner.tab-pane.fade
+                  .text-center
+                    i.img-intro.icon-checkmark-circle
+                  h3.head.text-center
+                    | thanks for starting a project on Cappifando! 
+                    span(style='color:#f48260;') ♥
+                  p.narrow.text-center
+                    br
+                    br
+                    form#form4.form-horizontal.text-center(name='form4', role='form', method='post', action='/subproj',enctype="multipart/form-data")
+                      fieldset
+                        button.btn-submit.btn.btn-success.btn-outline-rounded.green(type='submit', form='form4')
+                          | submit 
+                          span.glyphicon.glyphicon-send(style='margin-left:10px;')
+                .clearfix
+      //
+        ========================================================
+        FOOTER
+        =========================================================
+      footer#footer.color_9
+        .container
+          .row
+            .grid_12
+              p.info.text_4.color_4
+                | © 
+                span#copyright-year
+                |  
+                a(href='contacts.html') Contact us
+                br
+                | Website created by Z-SQL
+      script(src='js/script.js')
