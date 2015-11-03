@@ -1,0 +1,2 @@
+C:\Users\Owner\Documents\GitHub\CommunityFund\cappifando\server\obj\Debug\cappifando.njsprojResolveAssemblyReference.cache
+C:\Users\Owner\Documents\GitHub\CommunityFund\cappifando\server\bin\Microsoft.NodejsTools.WebRole.dll

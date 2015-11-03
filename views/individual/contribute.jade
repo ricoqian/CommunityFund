@@ -69,16 +69,7 @@ html(lang='en')
                   color: red;
                 }
               
-              script.
-                $("#like").click(function(){
-                $(".fa-thumbs-o-up").toggleClass("red");
-                $("#likesubmit").click();
-                });
-                
-                $("#unlike").click(function(){
-                $(".fa-thumbs-o-down").toggleClass("red");
-                $("#unlikesubmit").click();
-                });
+
               
               if req.isAuthenticated()
                 if finalRating == 1
@@ -152,7 +143,7 @@ html(lang='en')
             | © 
             span#copyright-year
             |  
-            a(href='../contacts.html') Contact us
+            a(href='/contacts') Contact us
             br
             | 						Website created by Z-SQL
     // jQuery

@@ -23,7 +23,7 @@ var createHash = function (password) {
 }
 
 var isAuthenticated = function (req, res, next) {
-	// if user is authenticated in the session, call the next() to call the next request handler 
+	// if user is authenticated in the session, call the next() to call the next request handler
 	// Passport adds this method to request object. A middleware is allowed to add properties to
 	// request and response objects
 	if (req.isAuthenticated())
@@ -33,7 +33,7 @@ var isAuthenticated = function (req, res, next) {
 }
 
 module.exports = function (passport){
-    
+
 
 
     router.get('/', home.index);
@@ -52,8 +52,8 @@ module.exports = function (passport){
             user: req.user
         });
     });
-      
-    router.get('/login', 
+
+    router.get('/login',
         function (req, res) {
         if (req.user) res.redirect('/');
     	    // Display the Login page with any flash message, if any
@@ -63,12 +63,12 @@ module.exports = function (passport){
     });
 
 	/* Handle login POST */
-    router.post('/users/session', 
+    router.post('/users/session',
         passport.authenticate('local', {
-            //login is a strategy name which is set by passport.use 
+            //login is a strategy name which is set by passport.use
 		    successRedirect: '/',
 		    failureRedirect: '/login',
-		    failureFlash : true  
+		    failureFlash : true
         }),
         function (req, res) {
             //session
@@ -81,15 +81,15 @@ module.exports = function (passport){
                 sess.views++
                 res.setHeader('Content-Type', 'text/html')
                 console.log('views: ' + sess.views )
-           
+
             } else {
                 sess.views = 1
                 console.log('welcome to the session demo. refresh!')
             }
         }
     );
-    
-    router.param('userId', 
+
+    router.param('userId',
         function (req, res, next, id) {
             var options = {
                 criteria: { _id : id }
@@ -116,24 +116,24 @@ module.exports = function (passport){
                             user: existingUser,
                             society: society
                         });
-                                        
+
                     });
                 }
-                
+
             }
             else {
                 //this user has been deleted
                 ;
             }
         });
-       
+
     });
     var extend = require('util')._extend;
     router.post('/users/:userId', isAuthenticated, function (req, res) {
 
         var user = req.user;
         user = extend(user, req.body);
-        
+
 
         console.log("!!!!!!!!!!!!!",user);
         user.save(function (err) {
@@ -144,7 +144,7 @@ module.exports = function (passport){
 
                // });
             }
-            
+
             res.render('/users/:userId/editprofile', {
                 user: user
                 //errors: utils.errors(err.errors || err)
@@ -153,11 +153,11 @@ module.exports = function (passport){
 
     });
 
-    
+
 
     router.get('/users/:userId/editprofile', auth.requiresLogin,function (req, res) {
         var user = req.profile;
-        
+
         User.findOne({ '_id': user._id }, function (err, existingUser) {
             if (err);//return error
             if (existingUser) {
@@ -171,19 +171,19 @@ module.exports = function (passport){
                 ;
             }
         });
-       
+
     });
-    
+
 
 	/* GET signup Page */
 	router.get('/signup', function(req, res){
 		res.render('users/signup',{message: req.flash('message')});
 	});
-    
+
 
     /* Handle signup POST */
     router.post('/signup', function (req, res,next) {
-        
+
         //validation
         req.assert('email', 'Email is not valid').isEmail();
         //req.assert('password', 'Password must be at least 4 characters long').len(4);
@@ -198,15 +198,15 @@ module.exports = function (passport){
             //console.log(errors);
         }
         else {
-            User.findOne({ 'email': req.body.email }, 
+            User.findOne({ 'email': req.body.email },
                 function (err, existingUser) {
                     if (existingUser) {
                         req.flash('message','Account with that email address already exists.' );
-                        //console.log('Account with that email address already exists.');    
+                        //console.log('Account with that email address already exists.');
                         res.redirect('/signup');
                     }
                     else {
-                
+
                     var user = new User({
                             firstname: req.body.firstname,
                             lasetname: req.body.lastname,
@@ -214,7 +214,7 @@ module.exports = function (passport){
                             password: req.body.password,
                             email: req.body.email,
                             community: req.body.community
-                          
+
                         });
 
                          user.save(function (err) {
@@ -224,8 +224,8 @@ module.exports = function (passport){
                                 //console.log('User Registration succesful');
                                 res.redirect('/');
                             });
-                    
-               
+
+
                         });
                     }//else
                  }//function
@@ -234,17 +234,14 @@ module.exports = function (passport){
         }//else
 
     });
-    
 
-	/* GET Home Page */
-	router.get('/home', isAuthenticated, function(req, res){
-		res.render('home', { user: req.user });
-	});
-    
+
+
+
 
     router.get('/searchproject', projects.search);
     router.get('/searchproject/filter', projects.filter);
-    
+
 
 	/* Handle Logout */
 	router.get('/logout', function(req, res) {
@@ -256,19 +253,15 @@ module.exports = function (passport){
     router.get('/individual/story/:id', individual.show);
     router.get('/startproj', auth.requiresLogin,projects.index);
 
-    router.post('/subproj',projects.create);
+    router.post('/subproj',auth.requiresLogin,projects.create);
 
     router.post('/individual/contribute/:id/rating', auth.requiresLogin, individual.rating);
     router.get('/individual/contribute/:id', individual.showCon);
 
-    router.post('/individual/contribute/addCom/:id', individual.addCom);
-    router.post("/individual/contribute/addMoni/:id", individual.addMoni);
-    
-    
-  
+    router.post('/individual/contribute/addCom/:id',auth.requiresLogin, individual.addCom);
+    router.post("/individual/contribute/addMoni/:id", auth.requiresLogin,individual.addMoni);
+
+
+
 	return router;
 }
-
-
-
-

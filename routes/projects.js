@@ -11,7 +11,7 @@ var fs = require('fs');
 
 exports.search = function (req, res) {
     var options = {};
-    
+
     Project.list(options, function (err, projects) {
         if (err) return res.render('500');
         Project.count().exec(function (err, count) {
@@ -21,7 +21,7 @@ exports.search = function (req, res) {
             });
         });
     });
-    
+
 };
 
 exports.filter = function (req, res) {
@@ -36,42 +36,45 @@ exports.filter = function (req, res) {
     var category = req.query.category;
     var progress = req.query.progress;
     var sortby = req.query.sortby;
-    console.log("fund",fund);
     var q = req.query.q;
-    /*
-    if (typeof category == 'undefined') {
-        category = 0;
-    }
-        
-    if (typeof fund == 'undefined') {
-        fund = 0;
-    }
-    
-    if (typeof progress == 'undefined') {
-        progress = 0;
-    }
-    */
 
-    //console.log("ffffffffff", req.body.filter, req.query.category, "bbb","fund:", req.body.fund);
-
-    
     var criteria = {};
     if (typeof category != 'undefined') criteria["category"] = category;
-    if (typeof fund != 'undefined') criteria["fund"] = fund;
+    if (typeof fund != 'undefined'){
+      var fundgoal={};
+      switch(fund) {
+        case "1":
+            fundgoal = { "$lt": 100 };
+            console.log("?????");
+            break;
+        case "2":
+            fundgoal = { "$gte": 100, "$lt": 500 };
+            break;
+        case "3":
+            fundgoal = { "$gte": 500, "$lt": 2000};
+            break;
+        case "4":
+            fundgoal = { "$gte": 2000};
+            break;
+      }
+      criteria["fundgoal"] = fundgoal;
+
+    }
+
     if (typeof progress != 'undefined') criteria["progress"] = progress;
     if (typeof q != 'undefined'&& q != '') criteria["title"] = q;
-    
 
 
-    console.log("!!!!!!!",criteria);
     var options = {
         criteria: criteria,
         sortby: sortby
     };
-
+    console.log("criteria:",criteria);
     Project.list(options, function (err, projects) {
-        if (err) return res.render('500');
-        
+        if (err){
+          console.log("list error");
+          return ;
+        }
         res.render('projects/search', {
             projects: projects,
             fund: fund,
@@ -98,14 +101,14 @@ exports.index = function (req, res) {
  */
 
 exports.create = function (req, res) {
-    
+
     if (!req.body) {
         res.send("error create a project");
     } else {
         //console.log(req.body);
         //console.log(req.files);
         if (!req.files) {
-            
+
             res.send("error upload a file")
 
         }
@@ -130,8 +133,8 @@ exports.create = function (req, res) {
 
               */
         else {
-            
-            
+
+
             /*
                 project.findOne({ name: "bbb" }, function (err, doc){
 if (err) {
@@ -149,6 +152,7 @@ if(!doc){
                       console.log("photo",req.files.photo);
             var imgPath = "./public/images/" + req.files.photo.name;
             var new_proj = {
+                user: req.user._id,
                 title: req.body.title,
                 url: req.body.url,
                 category: req.body.category,
@@ -160,9 +164,9 @@ if(!doc){
                 ssnetwork: req.body.ssnetwork, // social network link
                 tags: req.body.tags
             }
-            
-            
-            
+
+
+
             var images = undefined
             var project = new Project(new_proj);
             project.uploadAndSave(images, function (err) {
@@ -223,6 +227,3 @@ if(!doc){
   });
   */
 };
-
-
-

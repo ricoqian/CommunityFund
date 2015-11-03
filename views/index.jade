@@ -127,11 +127,10 @@ html(lang='en')
               each project, i in projects
                 .col-md-4.portfolio-item
                   a(href='individual/story/#{project._id}')
-                    img.img-responsive(src='/images/#{project.photo.file.name}', alt='')
+                    img.img-responsive(src='/images/#{project.photo.file.name}', width=300,height=200)
                   h3
                     a(href='individual/story/#{project._id}') #{project.title}
-                  p(style="-o-text-overflow: ellipsis; text-overflow: ellipsis; overflow:hidden; white-space:nowrap; width: 300px;")
-                    | #{project.body}
+                  p(style="-o-text-overflow: ellipsis; text-overflow: ellipsis; overflow:hidden; white-space:nowrap; width: 300px;") #{project.body}
 
           footer#footer.color_9
             .container

@@ -44,60 +44,18 @@ exports.index = function (req, res){
 
 
 
-/**
- * Create an article
- * Upload an image
- */
-
-exports.create = function (req, res) {
-    var article = new Article(req.body);
-    console.log(req.files.image);
-    var images = undefined;
-
-    article.user = req.user;
-
-  article.uploadAndSave(images, function (err) {
-    if (!err) {
-      req.flash('success', 'Successfully created article!');
-      return res.redirect('/articles/'+article._id);
-    }
-    console.log(err);
-    res.render('articles/edit', {
-      title: 'New Article',
-      article: article,
-      errors: utils.errors(err.errors || err)
-    });
-  });
-};
 
 
 exports.addMoni = function (req, res) {
-    
+
     var proj = req.project;
-    console.log("222222222222222222222222");
+    
     var user = req.user;
     var finalRating = 0;
-    if (req.isAuthenticated()) {
-        Rating.findOne({ '_user': user._id, '_project': proj._id },
-           function (err, existingRating) {
-            if (err) {
-                
-            }
-            if (existingRating) {
-                finalRating = existingRating.rating;
-                console.log("find existing", existingRating);
-            }
-            
-            res.render('individual/contribute', {
-                project: proj
-            });
-        });
-    }
-    else {
-        
-        console.log("xxxxxxxxxxxxxxxx");
+
+
         Project.findOne({ _id: proj._id }, function (err, existingProj) {
-            console.log("innnnnnnnnnnnn");
+
             if (err) {
                 console.log("findRatingError:" + err);
                 return res.redirect('/articles/' + article._id);
@@ -105,20 +63,16 @@ exports.addMoni = function (req, res) {
             if (existingProj) {
                 console.log("find existing");
             }
-            
+
             console.log(req.body);
             existingProj.hasRaised += Number(req.body.amount);
             existingProj.save(function (err) {
-                
+
                 if (err) { console.log("some bad errorr!!!!!!!!!!") }                ;
-                
+
                 console.log(existingProj);
-                
-                res.render('individual/contribute', {
-                    project: existingProj
-                  //  article: req.article,
-                //finalRating: finalRating
-                });
+
+                res.redirect('/individual/contribute/'+existingProj._id);
 
 
             });
@@ -126,7 +80,7 @@ exports.addMoni = function (req, res) {
 
         });
 
-    }
+
 
 
 
@@ -151,27 +105,11 @@ exports.addMoni = function (req, res) {
 
 //used to add comment on the project
 exports.addCom = function (req, res) {
-    
+
     var proj = req.project;
     var user = req.user;
-    var finalRating = 0;
-    if (req.isAuthenticated()) {
-        Rating.findOne({ '_user': user._id, '_article': proj._id },
-           function (err, existingRating) {
-            if (err) {
-               
-            }
-            if (existingRating) {
-                finalRating = existingRating.rating;
-                console.log("find existing", existingRating);
-            }
-            
-            res.render('individual/contribute', {
-                project: proj
-            });
-        });
-    }
-    else {
+
+
 
         Project.findOne({ _id: proj._id }, function (err, existingProj) {
             if (err) {
@@ -181,18 +119,20 @@ exports.addCom = function (req, res) {
             if (existingProj) {
                 console.log("find existing");
             }
-            
+
             console.log(req.body);
             existingProj.comments.push(req.body.com);
             existingProj.save(function (err) {
-                
+
                 if (err) { console.log("some bad errorr!!!!!!!!!!") }                ;
-                
+
                 console.log(existingProj.comments);
-                
+/*
                 res.render('individual/contribute', {
                     project: existingProj
                 });
+*/
+res.redirect('/individual/contribute/'+existingProj._id);
 
 
             });
@@ -200,7 +140,7 @@ exports.addCom = function (req, res) {
 
         });
 
-    }
+
 
 
 
@@ -215,30 +155,6 @@ exports.addCom = function (req, res) {
 };
 
 
-/**
- * Update article
- */
-
-exports.update = function (req, res){
-  var article = req.article;
-  var images = undefined;
-
-  // make sure no one changes the user
-  delete req.body.user;
- article = extend(article, req.body);
-
-  article.save(function (err) {
-    if (!err) {
-      return res.redirect('/articles/' + article._id);
-    }
-
-    res.render('articles/edit', {
-      title: 'Edit Article',
-      article: article,
-      errors: utils.errors(err.errors || err)
-    });
-  });
-};
 
 /**
  * Show
@@ -246,28 +162,10 @@ exports.update = function (req, res){
 
 exports.show = function (req, res) {
     var proj = req.project;
-    console.log("1111111",proj);
+
     var user = req.user;
     var finalRating = 0;
-    if (req.isAuthenticated()) {
-        Rating.findOne({ '_user': user._id, '_project': proj._id },
-            function (err, existingRating) {
-                if (err) {
-                    console.log("findRatingError:" + err);
-                    return res.redirect('/individual/story/' + proj._id);
-                }
-                if (existingRating) {
-                finalRating = existingRating.rating;
-                console.log("find existing",existingRating);
-            }
 
-            res.render('individual/story', {
-                project: req.project,
-                finalRating: finalRating
-            });
-        });
-    }
-    else {
         Project.findOne({_id:proj._id},function(err, existingProj){
 
           if (err) {
@@ -286,7 +184,6 @@ exports.show = function (req, res) {
 
         });
 
-    }
 
 
 };
@@ -294,14 +191,14 @@ exports.show = function (req, res) {
 
 exports.showCon = function (req, res) {
     var proj = req.project;
-    console.log("1111111",proj);
+
     var user = req.user;
     var finalRating = 0;
     if (req.isAuthenticated()) {
         Rating.findOne({ '_user': user._id, '_project': proj._id },
             function (err, existingRating) {
                 if (err) {
-                    
+
                 }
                 if (existingRating) {
                 finalRating = existingRating.rating;
@@ -309,13 +206,16 @@ exports.showCon = function (req, res) {
             }
 
             res.render('individual/contribute', {
-                pert: proj.hasRaised / proj.fundgoal,
-                project: req.project,
+                project: proj,
+                pert: proj.hasRaised /  proj.fundgoal,
                 finalRating: finalRating
             });
         });
     }
     else {
+
+
+
         Project.findOne({_id:proj._id},function(err, existingProj){
 
           if (err) {
@@ -327,7 +227,7 @@ exports.showCon = function (req, res) {
             }
       res.render('individual/contribute', {
           project: existingProj,
-          pert: existingProj.hasRaised /  existingProj.fundgoal 
+          pert: existingProj.hasRaised /  existingProj.fundgoal
             //  article: req.article,
           //finalRating: finalRating
       });
@@ -346,27 +246,13 @@ exports.showCon = function (req, res) {
 
 
 
-/**
- * Delete an article
- */
-exports.destroy = function (req, res){
-  var article = req.article;
-  article.remove(function (err){
-    req.flash('info', 'Deleted successfully');
-    res.redirect('/articles');
-  });
-};
-
 
 exports.rating = function (req, res){
     console.log("start rating!!", req.project);
     //search if this user likes/dislikes this article before
     var project = req.project;
     var user = req.user;
-    /*
-    for (var i = 0; i < article.rating.length; i++) {
-        ;
-    }*/
+
     var previousRating = 0;
     var currentRating = 0;
     var finalRating = 0;

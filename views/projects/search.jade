@@ -76,15 +76,21 @@ block content
           a(data-toggle='collapse', data-target='#Fund')
             | Amount of fund needed
             span.fa.arrow
-          ul#Fund(class="collapse")
+          ul#Fund(class="collapse in")
             li
               .checkbox_container
-                input(type='checkbox' name='fund' value='1' form="filter")
+                if fund=='1'
+                  input(type='checkbox' name='fund' value='1' form="filter" checked)
+                else
+                  input(type='checkbox' name='fund' value='1' form="filter" unchecked)
               .inlineli
                 label <$100
             li
               .checkbox_container
-                input(type='checkbox' name='fund' value='2' form="filter")
+                if fund=='2'
+                  input(type='checkbox' name='fund' value='2' form="filter" checked)
+                else
+                  input(type='checkbox' name='fund' value='2' form="filter" unchecked)
               .inlineli
                 label $100~$500
             li
@@ -98,7 +104,10 @@ block content
                 label $500~$2000
             li
               .checkbox_container
-                input(type='checkbox' name='fund' value='4' form="filter")
+                if fund=='4'
+                  input(type='checkbox' name='fund' value='4' form="filter" checked)
+                else
+                  input(type='checkbox' name='fund' value='4' form="filter" unchecked)
               .inlineli
                 label >$2000
         li
@@ -150,18 +159,13 @@ block content
           each project, i in projects
             .col-md-4.portfolio-item
               a(href="/individual/story/#{project._id}" title="#{project.title}") 
-                img.img-responsive(src='/images/#{project.photo.file.name}', alt='')
+                img.img-responsive(src='/images/#{project.photo.file.name}', alt='', width="500" height="350")
               h3 Project Title: 
                 a(href="/individual/story/#{project._id}" title="#{project.title}") #{project.title} 
               p Created Time:#{project.createdAt.toISOString().replace(/T/, ' ').replace(/\..+/, '')}
               if project.user 
                 span Author: 
                 a(href="/users/#{project.user._id}") #{project.user.username} 
-              if project.tags 
-                span Tags:
-                each tag in project.tags.split(',')
-                  i.muted.fa.fa-tag
-                  a.tag(href='/tags/#{tag}') #{tag}
               h3 Description: 
               p(style="-o-text-overflow: ellipsis; text-overflow: ellipsis; overflow:hidden; white-space:nowrap; width: 300px;") #{project.body}
 
@@ -181,7 +185,7 @@ block content
     margin-top: 10px;
     margin-left: 20px;
     padding-top: 20px;
-    height: 1000px;
+    height: 3000px;
     <!
     --font-size: 20px;-->
     }

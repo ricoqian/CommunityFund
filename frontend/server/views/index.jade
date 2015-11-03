@@ -1,0 +1,215 @@
+doctype html
+html(lang='en')
+  head
+    title Home
+    meta(charset='utf-8')
+    meta(name='format-detection', content='telephone=no')
+    link(rel='icon', href='images/favicon.ico', type='image/x-icon')
+    link(rel='stylesheet', href='css/grid.css')
+    link(rel='stylesheet', href='css/style.css')
+    link(rel='stylesheet', href='css/camera.css')
+    link(rel='stylesheet', href='css/owl.carousel.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    script(src='js/jquery.js')
+    script(src='js/jquery-migrate-1.2.1.js')
+    script(src='js/jquery.equalheights.js')
+    // [if (gt IE 9)|!(IE)] <!
+    script(src='js/jquery.mobile.customized.min.js')
+    // <![endif]
+    script(src='js/camera.js')
+    script(src='js/owl.carousel.js')
+    //if lt IE 9
+      div(style=' clear: both; text-align:center; position: relative;')
+        a(href='http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode')
+          img(src='http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg', border='0', height='42', width='820', alt='You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.')
+      script(src='js/html5shiv.js')
+      link(rel='stylesheet', type='text/css', media='screen', href='css/ie.css')
+  body
+    .page
+      //
+        ========================================================
+        HEADER
+        =========================================================
+      header#header
+        .brand.put-center
+          h1
+            a(href='index')
+              img(src='images/logo_updated.jpg', alt='Cappifando', width='220', height='100')
+        #stuck_container
+          .container
+            .row
+              .grid_12
+                nav.nav.put-left
+                  ul.sf-menu
+                    li
+                      a(href='searchproject') Projects
+                      ul
+                        li
+                          a(href='#') Design
+                        li
+                          a(href='#') Art
+                        li
+                          a(href='#') Software
+                        li
+                          a(href='#') Hardware
+                    li
+                      a(href='contacts') About Us
+                nav.nav.put-right
+                  ul.sf-menu
+                    li
+                      form.navbar-form.navbar-right(role='search')
+                        .form-group
+                          input.form-control(type='text', placeholder='Search')
+                        button#headerSearchButton.btn.btn-default(type='submit')
+                          a(href='searchproject')
+                            span.glyphicon.glyphicon-search
+                    // <li class="current"><a href="services">Services</a></li>
+                    li
+                      a(href='login') Log in
+                    li
+                      a(href='signup') Sign up
+      //
+        ========================================================
+        CONTENT
+        =========================================================
+      section#content
+        .ic
+          | More Website Templates @ TemplateMonster.com - September08, 2014!
+        .camera-wrapper
+          #camera.camera-wrap
+            div(data-src='images/firstslide.jpg')
+              .fadeIn.camera_caption
+                h2.text_1.color_1 Looking For Something Fun?
+                a.btn_1(href='#') See More
+            div(data-src='images/thirdslide.jpg')
+              .fadeIn.camera_caption
+                h2.text_1.color_1 Most Popular Designs
+                a.btn_1.pull-right(href='#') See More
+            div(data-src='images/secondslide.jpg')
+              .fadeIn.camera_caption
+                h2.text_1.color_1.text-left Wild Ideas start here
+                a.btn_1.pull-right(href='#') See More
+        .container
+          .row.wrap_1.wrap_5
+            .grid_3
+              .box_1
+                .icon_1
+                h3.text_2.color_2.maxheight1
+                  a(href='start_proj') Start a Project
+                p.text_3.color_2.maxheight
+                  | We’re excited that you have some ideas that will help make our world more beautiful.
+                a.btn_2(href='start_proj') begin
+            .grid_3
+              .box_1
+                .icon_2
+                h3.text_2.color_2.maxheight1
+                  a(href='searchproject') Donate to Projects
+                p.text_3.color_2.maxheight
+                  | Search interesting projects and donate to a project today!
+                a.btn_2(href='searchproject') search
+            .grid_3
+              .box_1
+                .icon_3
+                h3.text_2.color_2.maxheight1
+                  a(href='#') How It Works
+                p.text_3.color_2.maxheight
+                  | Cannot figure out how to use Cappifando? Don't worry because we made a tutorial for you!
+                a.btn_2(href='#') learn it!
+        //
+          ========================================================
+          Display Popular projects
+          =========================================================
+        .container
+          // Page Header
+          .row
+            .col-lg-12
+              h1.page-header
+                | What's Popuar
+                // <small>Secondary Text</small>
+          // /.row
+          // Projects Row
+          .row
+            .col-md-4.portfolio-item
+              a(href='individualproject/index')
+                img.img-responsive(src='http://placehold.it/700x400', alt='')
+              h3
+                a(href='individualproject/index') Project Name
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+            .col-md-4.portfolio-item
+              a(href='individualproject/index')
+                img.img-responsive(src='http://placehold.it/700x400', alt='')
+              h3
+                a(href='individualproject/index') Project Name
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+            .col-md-4.portfolio-item
+              a(href='individualproject/index')
+                img.img-responsive(src='http://placehold.it/700x400', alt='')
+              h3
+                a(href='individualproject/index') Project Name
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+          // /.row
+          // Projects Row
+          .row
+            .col-md-4.portfolio-item
+              a(href='individualproject/index')
+                img.img-responsive(src='http://placehold.it/700x400', alt='')
+              h3
+                a(href='individualproject/index') Project Name
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+            .col-md-4.portfolio-item
+              a(href='individualproject/index')
+                img.img-responsive(src='http://placehold.it/700x400', alt='')
+              h3
+                a(href='individualproject/index') Project Name
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+            .col-md-4.portfolio-item
+              a(href='individualproject/index')
+                img.img-responsive(src='http://placehold.it/700x400', alt='')
+              h3
+                a(href='individualproject/index') Project Name
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+          // Projects Row
+          .row
+            .col-md-4.portfolio-item
+              a(href='individualproject/index')
+                img.img-responsive(src='http://placehold.it/700x400', alt='')
+              h3
+                a(href='individualproject/index') Project Name
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+            .col-md-4.portfolio-item
+              a(href='individualproject/index')
+                img.img-responsive(src='http://placehold.it/700x400', alt='')
+              h3
+                a(href='individualproject/index') Project Name
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+            .col-md-4.portfolio-item
+              a(href='individualproject/index')
+                img.img-responsive(src='http://placehold.it/700x400', alt='')
+              h3
+                a(href='individualproject/index') Project Name
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.
+          //
+            ========================================================
+            FOOTER
+            =========================================================
+          footer#footer.color_9
+            .container
+              .row
+                .grid_12
+                  p.info.text_4.color_4
+                    | © 
+                    span#copyright-year
+                    |  
+                    a(href='contacts') Contact us
+                    br
+                    | 										Website created by Z-SQL
+          script(src='js/script.js')

@@ -5,20 +5,20 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='format-detection', content='telephone=no')
     link(rel='icon', href='images/favicon.ico', type='image/x-icon')
-    link(rel='stylesheet', href='css/login.css')
-    link(rel='stylesheet', href='css/grid.css')
-    link(rel='stylesheet', href='css/style.css')
+    link(rel='stylesheet', href='/css/login.css')
+    link(rel='stylesheet', href='/css/grid.css')
+    link(rel='stylesheet', href='/css/style.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
-    script(src='js/jquery.js')
-    script(src='js/jquery-migrate-1.2.1.js')
-    script(src='js/jquery.equalheights.js')
-    script(src='js/isotope.min.js')
-    script(src='js/login.js')
+    script(src='/js/jquery.js')
+    script(src='/js/jquery-migrate-1.2.1.js')
+    script(src='/js/jquery.equalheights.js')
+    script(src='/js/isotope.min.js')
+    script(src='/js/login.js')
     //if lt IE 9
       div(style=' clear: both; text-align:center; position: relative;')
         a(href='http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode')
           img(src='http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg', border='0', height='42', width='820', alt='You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.')
-      script(src='js/html5shiv.js')
+      script(src='/js/html5shiv.js')
       link(rel='stylesheet', type='text/css', media='screen', href='css/ie.css')
   body
     .page
@@ -29,7 +29,7 @@ html(lang='en')
       header#header
         .brand.put-center
           h1
-            a(href='index')
+            a(href='/')
               img(src='images/logo_updated.jpg', alt='Cappifando', width='220', height='100')
         #stuck_container
           .container
@@ -38,7 +38,7 @@ html(lang='en')
                 nav.nav.put-left
                   ul.sf-menu
                     li
-                      a(href='searchproject') Projects
+                      a(href='/searchproject') Projects
                       ul
                         li
                           a(href='#') Design
@@ -49,7 +49,7 @@ html(lang='en')
                         li
                           a(href='#') Hardware
                     li
-                      a(href='contacts') About Us
+                      a(href='/contacts') About Us
                 nav.nav.put-right
                   ul.sf-menu
                     li
@@ -61,9 +61,9 @@ html(lang='en')
                             span.glyphicon.glyphicon-search
                     // <li class="current"><a href="services">Services</a></li>
                     li
-                      a(href='login') Log in
+                      a(href='/login') Log in
                     li
-                      a(href='signup') Sign up
+                      a(href='/signup') Sign up
       //
         ========================================================
         CONTENT
@@ -107,7 +107,7 @@ html(lang='en')
               | � 
               span#copyright-year
               |  
-              a(href='contacts') Contact us
+              a(href='/contacts') Contact us
               br
               | 							Website created by Z-SQL
-    script(src='js/script.js')
+    script(src='/js/script.js')

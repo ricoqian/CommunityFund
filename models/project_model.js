@@ -31,6 +31,7 @@ var setTags = function (tags) {
                          // set create and modify date the same when proj first created
                          //change modify date if project info changed
                          title: {type: String},
+                         user: { type : mongoose.Schema.ObjectId, ref : 'user' },
                          url: {type: String},
                          category: {type: String},
                          location: {type: String},
@@ -44,9 +45,9 @@ var setTags = function (tags) {
                         dislikes: { type: Number, default: 0 },
                         ratings: { type: Number, default : 0 },
                         createdAt  : { type : Date, default : Date.now },
-                                        comments: { type: [String], default: [""] },  //default no comments
-                        progress: { type: String, default: "haventstarted" },
                         comments: { type: [String], default: [""] },  //default no comments
+                        progress: { type: String, default: "haventstarted" },
+
                         donation: { type: Number, default: 0 },
                         hasRaised: { type: Number, default: 0 }
  });
@@ -121,7 +122,7 @@ var setTags = function (tags) {
                 .sort({ "ratings": -1 })// sort by date
                 .exec(cb);
             }
-            
+
         }
         else {
             this.find(criteria)

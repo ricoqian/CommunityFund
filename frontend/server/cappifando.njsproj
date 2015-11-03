@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <SchemaVersion>2.0</SchemaVersion>
+        <ProjectGuid>{bc5c0b02-1a8d-4ae0-bdf1-f6e5359af5e3}</ProjectGuid>
+        <ProjectHome />
+        <ProjectView>ShowAllFiles</ProjectView>
+        <StartupFile>app.js</StartupFile>
+        <WorkingDirectory>.</WorkingDirectory>
+        <OutputPath>.</OutputPath>
+        <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+        <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+        <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+    <ItemGroup>
+        <Content Include="package.json" />
+        <Compile Include="app.js" />
+        <Compile Include="routes\index.js" />
+        <Compile Include="routes\login.js" />
+        <Compile Include="routes\search.js" />
+        <Compile Include="routes\users.js" />
+        <Content Include="views\contacts.jade" />
+        <Content Include="views\contribute.jade" />
+        <Content Include="views\error.jade" />
+        <Content Include="views\index.jade" />
+        <Content Include="views\inindex.jade" />
+        <Content Include="views\layout.jade" />
+        <Content Include="views\login.jade" />
+        <Content Include="views\search.jade" />
+        <Content Include="views\signup.jade" />
+        <Content Include="views\startproj.jade" />
+        <Content Include="views\story.jade" />
+        <Content Include="public\css\animate.css" />
+        <Content Include="public\css\camera.css" />
+        <Content Include="public\css\contact-form.css" />
+        <Content Include="public\css\grid.css" />
+        <Content Include="public\css\ie.css" />
+        <Content Include="public\css\isotope.css" />
+        <Content Include="public\css\login.css" />
+        <Content Include="public\css\owl.carousel.css" />
+        <Content Include="public\css\start_proj.css" />
+        <Content Include="public\css\style.css" />
+        <Content Include="public\css\touchTouch.css" />
+        <Content Include="public\images\grabbing.png" />
+        <Content Include="public\images\logo.png" />
+        <Content Include="public\images\select.png" />
+        <Content Include="public\images\firstslide.jpg" />
+        <Content Include="public\images\index-1_img09.jpg" />
+        <Content Include="public\images\index-1_img10.jpg" />
+        <Content Include="public\images\index-1_img11.jpg" />
+        <Content Include="public\images\index-1_img12.jpg" />
+        <Content Include="public\images\index-1_img13.jpg" />
+        <Content Include="public\images\index-1_img14.jpg" />
+        <Content Include="public\images\logo.jpg" />
+        <Content Include="public\images\logo_noword.jpg" />
+        <Content Include="public\images\logo_updated.jpg" />
+        <Content Include="public\images\maggie.jpg" />
+        <Content Include="public\images\rico.jpg" />
+        <Content Include="public\images\secondslide.jpg" />
+        <Content Include="public\images\thirdslide.jpg" />
+        <Content Include="public\images\wayne.jpg" />
+        <Content Include="public\images\wayne2.jpg" />
+        <Content Include="public\images\xin.jpg" />
+        <Content Include="public\images\xin2.jpg" />
+        <Content Include="public\images\AjaxLoader.gif" />
+        <Content Include="public\images\camera-loader.gif" />
+        <Content Include="public\images\form-loader.gif" />
+        <Content Include="public\images\preloader.gif" />
+        <Content Include="public\images\favicon.ico" />
+        <Content Include="public\individualproject\contribute.html" />
+        <Content Include="public\individualproject\index.html" />
+        <Content Include="public\individualproject\story.html" />
+        <Compile Include="public\js\camera.js" />
+        <Compile Include="public\js\device.min.js" />
+        <Compile Include="public\js\html5shiv.js" />
+        <Compile Include="public\js\isotope.min.js" />
+        <Compile Include="public\js\jquery-migrate-1.2.1.js" />
+        <Compile Include="public\js\jquery.cookie.js" />
+        <Compile Include="public\js\jquery.easing.1.3.js" />
+        <Compile Include="public\js\jquery.equalheights.js" />
+        <Compile Include="public\js\jquery.js" />
+        <Compile Include="public\js\jquery.mobile.customized.min.js" />
+        <Compile Include="public\js\jquery.mobilemenu.js" />
+        <Compile Include="public\js\jquery.mousewheel.min.js" />
+        <Compile Include="public\js\jquery.simplr.smoothscroll.min.js" />
+        <Compile Include="public\js\jquery.ui.totop.js" />
+        <Compile Include="public\js\jquery.unveil.js" />
+        <Compile Include="public\js\login.js" />
+        <Compile Include="public\js\modal.js" />
+        <Compile Include="public\js\owl.carousel.js" />
+        <Compile Include="public\js\script.js" />
+        <Compile Include="public\js\start_proj.js" />
+        <Compile Include="public\js\superfish.js" />
+        <Compile Include="public\js\TMForm.js" />
+        <Compile Include="public\js\tmstickup.js" />
+        <Content Include="public\stylesheets\animate.css" />
+        <Content Include="public\stylesheets\camera.css" />
+        <Content Include="public\stylesheets\contact-form.css" />
+        <Content Include="public\stylesheets\grid.css" />
+        <Content Include="public\stylesheets\ie.css" />
+        <Content Include="public\stylesheets\isotope.css" />
+        <Content Include="public\stylesheets\login.css" />
+        <Content Include="public\stylesheets\owl.carousel.css" />
+        <Content Include="public\stylesheets\start_proj.css" />
+        <Content Include="public\stylesheets\style.css" />
+        <Content Include="public\stylesheets\touchTouch.css" />
+        <Content Include="public\individualproject\css\bootstrap.css" />
+        <Content Include="public\individualproject\css\bootstrap.min.css" />
+        <Content Include="public\individualproject\css\business-casual.css" />
+        <Content Include="public\individualproject\css\kudosplease-min.css" />
+        <Content Include="public\individualproject\fonts\glyphicons-halflings-regular.svg" />
+        <Content Include="public\individualproject\img\bg.jpg" />
+        <Content Include="public\individualproject\img\intro-pic.jpg" />
+        <Content Include="public\individualproject\img\slide-1.jpg" />
+        <Content Include="public\individualproject\img\slide-2.jpg" />
+        <Content Include="public\individualproject\img\slide-3.jpg" />
+        <Compile Include="public\individualproject\js\bootstrap.js" />
+        <Compile Include="public\individualproject\js\bootstrap.min.js" />
+        <Compile Include="public\individualproject\js\jquery.js" />
+        <Compile Include="public\individualproject\js\kudosplease.js" />
+        <Content Include="views\individualprojects\contribute.html" />
+        <Content Include="views\individualprojects\index.html" />
+        <Content Include="views\individualprojects\story.html" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="bin" />
+        <Folder Include="data" />
+        <Folder Include="data\_tmp" />
+        <Folder Include="data\journal" />
+        <Folder Include="public" />
+        <Folder Include="public\css" />
+        <Folder Include="public\images" />
+        <Folder Include="public\individualproject" />
+        <Folder Include="public\individualproject\css" />
+        <Folder Include="public\individualproject\fonts" />
+        <Folder Include="public\individualproject\img" />
+        <Folder Include="public\individualproject\js" />
+        <Folder Include="public\javascripts" />
+        <Folder Include="public\js" />
+        <Folder Include="public\stylesheets" />
+        <Folder Include="routes" />
+        <Folder Include="views" />
+        <Folder Include="views\individualprojects" />
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+    <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+    <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+    <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+    <ProjectExtensions>
+        <VisualStudio>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+            <WebProjectProperties>
+              <UseIIS>False</UseIIS>
+              <AutoAssignPort>True</AutoAssignPort>
+              <DevelopmentServerPort>0</DevelopmentServerPort>
+              <DevelopmentServerVPath>/</DevelopmentServerVPath>
+              <IISUrl>http://localhost:48022/</IISUrl>
+              <NTLMAuthentication>False</NTLMAuthentication>
+              <UseCustomServer>True</UseCustomServer>
+              <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+              <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+            </WebProjectProperties>
+          </FlavorProperties>
+          <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+            <WebProjectProperties>
+              <StartPageUrl>
+              </StartPageUrl>
+              <StartAction>CurrentPage</StartAction>
+              <AspNetDebugging>True</AspNetDebugging>
+              <SilverlightDebugging>False</SilverlightDebugging>
+              <NativeDebugging>False</NativeDebugging>
+              <SQLDebugging>False</SQLDebugging>
+              <ExternalProgram>
+              </ExternalProgram>
+              <StartExternalURL>
+              </StartExternalURL>
+              <StartCmdLineArguments>
+              </StartCmdLineArguments>
+              <StartWorkingDirectory>
+              </StartWorkingDirectory>
+              <EnableENC>False</EnableENC>
+              <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+            </WebProjectProperties>
+          </FlavorProperties>
+        </VisualStudio>
+    </ProjectExtensions>
+</Project>
